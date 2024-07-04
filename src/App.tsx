@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Toast, { ToastMessageType, ToastPosition } from "./components/Notifications/Toast";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="h-[200vh] ">
+      <Toast messageType={ToastMessageType.SUCCESS} position={ToastPosition.BOTTOM_LEFT}  />
     </div>
   );
-}
+};
 
 export default App;
+
+/**
+ *  TODO:
+ *  - start components files
+ *  - complete all of them using jsdocs,
+ *  in stories, use bard for code review
+ *  and make it as reusable as i can
+ * 
+ * 
+ *  MAYBE:
+ *  - fix folder for pages and etc
+ * 
+ * ├── pages/                   
+│   ├── Home/
+│   │   ├── index.tsx      
+│   │   ├── components/
+│   │   │   ├── Hero.tsx     
+│   │   │   ├── FeaturedProducts.tsx 
+│   │   │   └── ...         
+│   │   └── index.ts
+│   ├── About/               
+│   │   ├── index.tsx       
+│   │   ├── components/      
+│   │       ├── Team.tsx     
+│   │       ├── Mission.tsx  
+│   │       └── ...         
+│   │   └── index.ts
+ */
