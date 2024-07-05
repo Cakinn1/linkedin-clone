@@ -1,9 +1,9 @@
-import Toast, { ToastMessageType, ToastPosition } from "./components/Notifications/Toast";
+import { Toast } from "./components/Notifications";
 
 const App: React.FC = () => {
   return (
     <div className="h-[200vh] ">
-      <Toast messageType={ToastMessageType.SUCCESS} position={ToastPosition.BOTTOM_LEFT}  />
+      <Toast messageType="success" position="bottom-left" />
     </div>
   );
 };
