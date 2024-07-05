@@ -3,18 +3,7 @@ import { Button } from "../Button";
 import { MdError } from "react-icons/md";
 import { FaXmark } from "react-icons/fa6";
 import { FaCircleCheck } from "react-icons/fa6";
-export enum ToastPosition {
-  BOTTOM_RIGHT = "bottom-right",
-  BOTTOM_LEFT = "bottom-left",
-  TOP_LEFT = "top-left",
-  TOP_RIGHT = "top-right",
-}
-
-// continue adding more typings here as application grows
-export enum ToastMessageType {
-  DANGER = "error",
-  SUCCESS = "success",
-}
+import { ToastMessageType, ToastPosition } from "./Toast.types";
 
 interface ToastProps {
   messageType: ToastMessageType;
@@ -24,7 +13,7 @@ interface ToastProps {
 
 const Toast: React.FC<ToastProps> = ({
   messageType,
-  position = ToastPosition.BOTTOM_RIGHT,
+  position = "bottom-right",
   message,
 }) => {
   const [progress, setProgress] = useState<number>(100);
