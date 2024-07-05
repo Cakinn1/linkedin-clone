@@ -35,7 +35,7 @@ type Story = StoryObj<typeof Button>;
  */
 export const LargeSocialButton: Story = {
   args: {
-    size: ButtonSize.LARGE,
+    size: "large",
     varient: "social",
   },
 
@@ -84,7 +84,7 @@ export const LargeSocialButton: Story = {
 
 export const PostButton: Story = {
   args: {
-    size: 'small',
+    size: "small",
     varient: "primary",
     children: "Post",
   },

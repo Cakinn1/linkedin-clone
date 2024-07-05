@@ -24,10 +24,10 @@ const Button: React.FC<ButtonProps> = ({
   endIcon,
   loading,
   onClick,
-  size = ButtonSize.MEDIUM,
+  size = "medium",
   startIcon,
   varient = "primary",
-  type = ButtonType.BUTTON,
+  type = "button",
   href,
   classString,
   liked,
@@ -44,8 +44,8 @@ const Button: React.FC<ButtonProps> = ({
         "border flex items-center p-2 duration-300 rounded-md justify-center active:scale-95",
         {
           "border-none hover:bg-gray-100 ": varient === "social",
-          "px-6 py-4 text-lg": size === ButtonSize.LARGE,
-          "px-3 py-1 text-sm": size === ButtonSize.SMALL,
+          "px-6 py-4 text-lg": size === "large",
+          "px-3 py-1 text-sm": size === "small",
           "bg-blue-600 px-3 py-4 text-white text-sm rounded-3xl  hover:bg-blue-800 ":
             varient === "primary",
           "rounded-full p-2 border-none hover:bg-gray-100 ":

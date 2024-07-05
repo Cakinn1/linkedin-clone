@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Button, ButtonType, ButtonVarient } from "../Button";
+import { Button } from "../Button";
 import { MdError } from "react-icons/md";
 import { FaXmark } from "react-icons/fa6";
 import { FaCircleCheck } from "react-icons/fa6";
@@ -37,7 +37,7 @@ const Toast: React.FC<ToastProps> = ({
         const newProgress = prevProgress - 2;
         if (newProgress <= 0) {
           clearInterval(intervalRef.current!);
-          setCloseToast(true)
+          setCloseToast(true);
         }
         return newProgress;
       });
@@ -70,10 +70,9 @@ const Toast: React.FC<ToastProps> = ({
     >
       <span className="absolute right-4 top-4">
         <Button
-          type={ButtonType.BUTTON}
           onClick={() => setCloseToast(!closeToast)}
           startIcon={<FaXmark />}
-          varient={ButtonVarient.TERTIARY}
+          varient="tertiary"
           classString="ml-auto p-0 hover:bg-transparent text-gray-400 hover:text-black rounded-full border-none"
         />
       </span>
