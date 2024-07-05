@@ -36,7 +36,7 @@ type Story = StoryObj<typeof Button>;
 export const LargeSocialButton: Story = {
   args: {
     size: ButtonSize.LARGE,
-    varient: ButtonVarient.SOCIAL,
+    varient: "social",
   },
 
   render: (args) => {
@@ -73,20 +73,19 @@ export const LargeSocialButton: Story = {
   },
 };
 
-
 /**
- * 
+ *
  * Story showcasing a "Post" button with loading, success, and error states.
- * 
+ *
  * @story
  * @name PostButton
- * 
+ *
  */
 
 export const PostButton: Story = {
   args: {
-    size: ButtonSize.SMALL,
-    varient: ButtonVarient.PRIMARY,
+    size: 'small',
+    varient: "primary",
     children: "Post",
   },
 
@@ -142,7 +141,7 @@ export const PostButton: Story = {
 
 export const tertiaryButton: Story = {
   args: {
-    varient: ButtonVarient.TERTIARY,
+    varient: "tertiary",
     // either use: BsThreeDots, HiXMark, PiNotePencil, TBD
     startIcon: <BsThreeDots />,
   },

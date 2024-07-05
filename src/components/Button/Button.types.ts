@@ -1,21 +1,41 @@
+/**
+ * Represents the difference sizes aviable for the Button component.
+ *
+ * @typedef {'large' | 'medium' | 'small'} ButtonSize
+ * @property {'large'} LARGE - Large size button
+ * @property {'medium'} MEDIUM - Medium size button (default)
+ * @property {'small'} SMALL - Small size button
+ */
 
-export enum ButtonSize {
-  LARGE = "large",
-  MEDIUM = "medium", // default
-  SMALL = "small",
-}
+export type ButtonSize = "large" | "medium" | "small";
 
-export enum ButtonVarient {
-  DANGER = "danger", // delete, cancel
-  PRIMARY = "primary", // default
-  SOCIAL = "social", //  like, retweet
-  SECONDARY = "secondary", // learn more, save
-  LINK = "link", // actions that navigate to another page
-  TERTIARY = 'Tertiary' // minimal styling
-}
+/**
+ * Represents the different visual styles (variants) available for the Button component.
+ *
+ * @typedef {'primary' | 'secondary' | 'danger' | 'link' | 'social' | 'tertiary'} ButtonVariant
+ * @property {'primary'} PRIMARY - The main call-to-action button (default).
+ * @property {'secondary'} SECONDARY - A less prominent action button.
+ * @property {'danger'} DANGER - Used for destructive actions.
+ * @property {'link'} LINK - Styled as a hyperlink.
+ * @property {'social'} SOCIAL - Used for social actions (like, share, etc.).
+ * @property {'tertiary'} TERTIARY - Minimal styling, for less important actions.
+ */
 
-export enum ButtonType {
-  BUTTON = "button",
-  RESET = "reset",
-  SUBMIT = "submit",
-}
+export type ButtonVarient =
+  | "danger"
+  | "primary"
+  | "social"
+  | "secondary"
+  | "link"
+  | "tertiary";
+
+/**
+ * Represents the different roles of button available for the Button component.
+ *
+ * @typedef {'button' | 'reset' | "submit"} ButtonType
+ * @property {'button'} BUTTON - A standard button that triggers a function when clicked (default)
+ * @property {'reset'} RESET -  Resets the values of all form elements within nearest parent '<form>'.
+ * @property {'submit'} SUBMIT - Submites the form data to server when clicked.
+ */
+
+export type ButtonType = "button" | "reset" | "submit";

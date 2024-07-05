@@ -12,10 +12,13 @@ export default App;
 
 /**
  *  TODO:
- *  - start components files
  *  - complete all of them using jsdocs,
  *  in stories, use bard for code review
  *  and make it as reusable as i can
+ * - finish button input notification and spinner,
+ * - i may not do the input folder one and change it still thinking
+ * - also refactor the butotn component still not done
+ * - write test and fix folder for notifications
  * 
  * 
  *  MAYBE:

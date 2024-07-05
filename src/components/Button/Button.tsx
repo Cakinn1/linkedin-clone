@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   size = ButtonSize.MEDIUM,
   startIcon,
-  varient = ButtonVarient.PRIMARY,
+  varient = "primary",
   type = ButtonType.BUTTON,
   href,
   classString,
@@ -43,13 +43,13 @@ const Button: React.FC<ButtonProps> = ({
       className={clsx(
         "border flex items-center p-2 duration-300 rounded-md justify-center active:scale-95",
         {
-          "border-none hover:bg-gray-100 ": varient === ButtonVarient.SOCIAL,
+          "border-none hover:bg-gray-100 ": varient === "social",
           "px-6 py-4 text-lg": size === ButtonSize.LARGE,
           "px-3 py-1 text-sm": size === ButtonSize.SMALL,
           "bg-blue-600 px-3 py-4 text-white text-sm rounded-3xl  hover:bg-blue-800 ":
-            varient === ButtonVarient.PRIMARY,
+            varient === "primary",
           "rounded-full p-2 border-none hover:bg-gray-100 ":
-            varient === ButtonVarient.TERTIARY,
+            varient === "tertiary",
           "bg-gray-100": liked,
         },
         classString
