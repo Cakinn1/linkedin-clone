@@ -178,6 +178,9 @@ const Toast: React.FC<ToastProps> = ({
     }
   }, [isOpen, openAnimation]);
 
+  /**
+   * CSS classes for toast section
+   */
   const toastClass = clsx(
     `duration-300 fixed flex  flex-col bottom-8 
      justify-center bg-white shadow-md  overflow-hidden  
