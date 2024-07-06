@@ -20,28 +20,28 @@ import {
 interface ToastProps {
   messageType: ToastMessageType;
   position?: ToastPosition;
+  autoClose?: boolean;
+  hideProgressBar?: boolean;
 }
 
 /**
  * Renders a toast notification with a progress bar.
  *
- * This component automatically disappears (from the dom) after a short delay,
- * and its progress bar indicates the remaining time before disappearing.
- *
- *
- * @todo (#1) Currently "position" prop is not working as attended and needs to get fixed
- * @todo (#2) Add support for multiple toasts displayed simultaneously.
- * @todo (#3) could use requestAnimationFrame for a smoother progress bar
- * @todo (#$) Implement more ways to customize the toast's appearance (colors, styles, icons, etc)
+ * This component automatically closes after a short delay, and its progress bar
+ * indicates the remaining time before closing.
  *
  * @param props - The toast component properties
  * @param props.messageType - Determines the toast type (error or message) and content.
  * @param props.position - Controls the toast placement on the screen.
+ * @param props.hideProgressBar - Hides the progress bar if true (default: false).
+ * @param props.autoClose - Disables the progress bar interval and auto-closing behavior if false (default: true).
  */
 
 const Toast: React.FC<ToastProps> = ({
   messageType,
   position = "bottom-right",
+  autoClose = true,
+  hideProgressBar = false,
 }) => {
   const [progress, setProgress] = useState<number>(100);
   const [isClosing, setIsClosing] = useState<boolean>(false);
@@ -151,8 +151,11 @@ const Toast: React.FC<ToastProps> = ({
       }
       return;
     }
-    intervalRef.current = setInterval(updateProgress, 100);
-  }, [isOpen, dispatch]);
+
+    if (isOpen && autoClose) {
+      intervalRef.current = setInterval(updateProgress, 100);
+    }
+  }, [isOpen, dispatch, autoClose]);
 
   /**
    * Manages the opening animation of the toast.
@@ -175,25 +178,30 @@ const Toast: React.FC<ToastProps> = ({
     }
   }, [isOpen, openAnimation]);
 
+  const toastClass = clsx(
+    `duration-300 fixed flex  flex-col bottom-8 
+     justify-center bg-white shadow-md  overflow-hidden  
+     border w-[350px] min-h-[80px]  rounded-lg p-4`,
+    {
+      "-left-[400px]": openAnimation,
+      "left-8": !openAnimation,
+      "-translate-x-[120%]": isClosing,
+    }
+  );
+
   return (
     <>
       {isOpen && (
-        <div
-          className={clsx(
-            `  duration-300 fixed flex flex-col bottom-8 justify-center bg-white shadow-md  overflow-hidden  border w-[350px] min-h-[80px]  rounded-lg p-4`,
-            {
-              "-left-[400px]": openAnimation,
-              "left-8": !openAnimation,
-              "-translate-x-[120%]": isClosing,
-            }
-          )}
-        >
+        <div className={toastClass}>
           <ToastCloseButton onClick={closeToastButton} />
           <ToastContainer>
             <ToastIcon icon={toastContent[messageType].icon} />
             <ToastMessage message={toastContent[messageType].message} />
           </ToastContainer>
-          <ToastProgress message={messageType} progress={progress} />
+          {hideProgressBar ||
+            (autoClose && (
+              <ToastProgress message={messageType} progress={progress} />
+            ))}
         </div>
       )}
     </>

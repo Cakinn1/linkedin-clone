@@ -1,24 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { Toast } from "./components/Notifications";
-import { RootState } from "./store";
-import { openAndCloseToast } from "./store/toastSlice";
-
 const App: React.FC = () => {
-  const dispatch = useDispatch();
-  const toast = useSelector((state: RootState) => state.toast);
-  console.log(toast)
-  return (
-    <div className="h-[200vh] ">
-      <Toast messageType="success" position="bottom-left" />
-      <button
-        onClick={() => {
-          dispatch(openAndCloseToast(!toast.isOpen));
-        }}
-      >
-        open toast
-      </button>
-    </div>
-  );
+  return <div>app</div>;
 };
 
 export default App;
