@@ -1,8 +1,7 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { PropsWithChildren } from "react";
 import { ButtonSize, ButtonType, ButtonVarient } from "./Button.types";
-// testing
 import clsx from "clsx";
-import { Spinner } from "../Spinner";
+import { Loading } from "../Loading";
 
 interface ButtonProps extends PropsWithChildren {
   size?: ButtonSize;
@@ -87,7 +86,7 @@ const Button: React.FC<ButtonProps> = ({
       {...(buttonType === "a" && { href })} // Adds href properties onto button˝
     >
       {loading ? (
-        <Spinner />
+        <Loading type="spinner" isLoading={loading} />
       ) : (
         <>
           {startIcon && <span>{startIcon}</span>}
