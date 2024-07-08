@@ -1,19 +1,16 @@
 import { StoryObj, Meta } from "@storybook/react/*";
 import Toast from "./Toast";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store";
+import { useDispatch } from "react-redux";
 import { openAndCloseToast } from "../../store/toastSlice";
-import { useEffect, useState } from "react";
 
 const meta: Meta<typeof Toast> = {
-  title: 'Components/Toast',
+  title: "Components/Toast",
   component: Toast,
   argTypes: {
     messageType: {
-      control: { type: 'select', options: ['success', 'error'] },
+      control: { type: "select", options: ["success", "error"] },
     },
   },
-
 };
 
 export default meta;
@@ -85,7 +82,7 @@ export const ToastWithoutProgressBar: Story = {
   args: {
     hideProgressBar: true,
     messageType: "success",
-    autoClose: false
+    autoClose: false,
   },
   render: (args) => {
     const { messageType, hideProgressBar, autoClose } = args;
@@ -100,7 +97,11 @@ export const ToastWithoutProgressBar: Story = {
         <button onClick={handleOpenToastWithoutProgressBar}>
           Simulate toast without progress bar
         </button>
-        <Toast messageType={messageType} autoClose={autoClose} hideProgressBar={hideProgressBar} />
+        <Toast
+          messageType={messageType}
+          autoClose={autoClose}
+          hideProgressBar={hideProgressBar}
+        />
       </>
     );
   },

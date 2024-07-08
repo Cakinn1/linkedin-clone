@@ -1,5 +1,38 @@
+import { useDispatch, useSelector } from "react-redux";
+import { Toast } from "./components/Notifications";
+import { openAndCloseToast } from "./store/toastSlice";
+import { RootState } from "./store";
+import { useEffect, useRef, useState } from "react";
+
 const App: React.FC = () => {
-  return <div>app</div>;
+  const dispatch = useDispatch();
+  const isopen = useSelector((state: RootState) => state.toast.isOpen);
+  let timerRef = useRef<NodeJS.Timeout | null>(null);
+  const [timer, settimer] = useState(0);
+  useEffect(() => {
+    if (isopen) {
+      timerRef.current = setInterval(() => {
+        settimer((prev) => {
+          console.log(prev);
+          return prev + 1;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [isopen]);
+
+  console.log(isopen);
+  return (
+    <div className="h-screen">
+      <button onClick={() => dispatch(openAndCloseToast(true))}>click</button>
+      <Toast messageType="error" />
+    </div>
+  );
 };
 
 export default App;

@@ -16,6 +16,7 @@ interface ButtonProps extends PropsWithChildren {
   href?: string;
   classString?: string;
   liked?: boolean;
+  id?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -31,6 +32,7 @@ const Button: React.FC<ButtonProps> = ({
   href,
   classString,
   liked,
+  id,
 }) => {
   const isDisabled = loading || disabled;
   const buttonType = href ? "a" : "button";
@@ -39,6 +41,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      data-testid={id}
       type={buttonType === "button" ? type : undefined}
       className={clsx(
         "border flex items-center p-2 duration-300 rounded-md justify-center active:scale-95",

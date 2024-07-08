@@ -70,11 +70,13 @@ const Toast: React.FC<ToastProps> = ({
     { icon: React.ReactElement; message: string }
   > = {
     error: {
-      icon: <MdError className="text-red-500" />,
+      icon: <MdError data-testid="error-icon" className="text-red-500" />,
       message: "Error has occurred",
     },
     success: {
-      icon: <FaCircleCheck className="text-green-500" />,
+      icon: (
+        <FaCircleCheck data-testid="success-icon" className="text-green-500" />
+      ),
       message: "Success",
     },
   };
