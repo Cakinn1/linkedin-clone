@@ -19,6 +19,28 @@ interface ButtonProps extends PropsWithChildren {
   id?: string;
 }
 
+/**
+ *
+ * Reusable Button component with customizable styles and functionality
+ *
+ * This component renders a button that can be used for various actions.
+ * It supports different sizes, styles, loading states, icon and can also function as a link
+ *
+ * @param props
+ * @param children - Elements inside button (optional)
+ * @param size - Size of button (`"small"` | `"medium"` | `"large"`). Default is `"medium"`.
+ * @param disabled - Whether the button is disabled (boolean)
+ * @param endIcon - Icon position at the end (React element, optional)
+ * @param loading - Loading state, disables children elements when true (boolean, optional)
+ * @param onClick - Function to be called when the button is clicked (optional)
+ * @param href - Changes button into link element (string, optional)
+ * @param liked - Checks if button has been liked (boolean, optional)
+ * @param type - Type of the button element (`"button"` | `"submit"` | `"reset"`). Default is `"button"`
+ * @param classString - Additional CSS classes to apply to the button (string, optional)
+ * @param id - Unique identifier for the button (string, optional)
+ *
+ */
+
 const Button: React.FC<ButtonProps> = ({
   children,
   disabled,
@@ -34,8 +56,11 @@ const Button: React.FC<ButtonProps> = ({
   liked,
   id,
 }) => {
+  // disables button if either is true
   const isDisabled = loading || disabled;
+  // Changes button type to either link or button
   const buttonType = href ? "a" : "button";
+
   // Move classes into variable onec class is complete
   // const buttonClasses = clsx("flex items-center bg-green-500 ")
 
@@ -59,7 +84,7 @@ const Button: React.FC<ButtonProps> = ({
       )}
       disabled={isDisabled}
       onClick={onClick}
-      {...(buttonType === "a" && { href })} // change button into a link
+      {...(buttonType === "a" && { href })} // Adds href properties onto button˝
     >
       {loading ? (
         <Spinner />
