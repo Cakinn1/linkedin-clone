@@ -9,7 +9,8 @@ interface SpinnerLoaderProps {
  * The icon is animated to spin and styled with color.
  *
  * @param props
- * @param props.spinnerColor - The color of the spinner (default: gray)
+ * @param props.spinnerColor - The color of the spinner. (default: gray)
+ *
  */
 
 const SpinnerLoader: React.FC<SpinnerLoaderProps> = ({ spinnerColor }) => {

@@ -1,8 +1,5 @@
-
-
 const SkeletonLoader: React.FC = ({}) => {
-    return (
-        <div></div>
-    )
-}
+  return <div></div>;
+};
 export default SkeletonLoader;
+

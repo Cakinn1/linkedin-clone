@@ -4,7 +4,6 @@ import { Button } from "../../Button";
 interface ToastCloseButtonProps {
   onClick: () => void;
 }
-
 /**
  *
  * Renders a button for manually closing a toast notification.

@@ -62,8 +62,7 @@ const Toast: React.FC<ToastProps> = ({
   };
 
   /**
-   * Defines the content (icon and message) for each toast type
-   * Makes it easy to customize the toast's appearance based on its message type.
+   * Defines the content (icon and message) for each toast type.
    */
   const toastContent: Record<
     ToastMessageType,
@@ -82,12 +81,7 @@ const Toast: React.FC<ToastProps> = ({
   };
 
   /**
-   * Handles the action of closing the toast notification.
-   *
-   * - Clears the progress bar interval.
-   * - Initiates the closing animation sequence.
-   * - After animation completion, resets the progress and closes
-   *    the toast in the Redux store.
+   * Closes toast after animation.
    */
   const closeToastButton = () => {
     if (intervalRef.current) {
@@ -102,8 +96,7 @@ const Toast: React.FC<ToastProps> = ({
   };
 
   /**
-   * Initiates the toast closing animation and dispatches
-   * the Redux action to close the toast after a delay.
+   * Animates and closes the toast.
    */
   const animateAndCloseToast = () => {
     setTimeout(() => setIsClosing(true), CLOSE_DELAY_MS);
@@ -114,10 +107,7 @@ const Toast: React.FC<ToastProps> = ({
   };
 
   /**
-   * Updates the progress of the toast's progress bar.
-   *
-   * Decrements the progress value and, when the progress reaches zero, triggers
-   *  the toast closing animation.
+   * Updates the progress bar value.
    */
   const updateProgress = () => {
     setProgress((prevProgress) => {
@@ -132,19 +122,12 @@ const Toast: React.FC<ToastProps> = ({
   };
 
   /**
-   * Manages the lifecycle of the toast's progress bar and closing animation.
-   *
-   * - If the toast is open (`isOpen` is true), it starts an interval to update the progress bar.
-   * - If the toast is closed (`isOpen` is false), it clears the interval, resets the progress,
-   *   and prepares for the next animation.
-   *
-   * Dependencies:
-   * - `isOpen`: This effect runs when the toast is opened or closed.
-   * - `dispatch`: This effect dispatches actions to the Redux store
+   * Manages the progress bar and closing animation based on the toast's open state.
    */
 
   useEffect(() => {
     if (!isOpen) {
+      // Resets porgress and animation when closed.
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         setProgress(100);
@@ -161,13 +144,6 @@ const Toast: React.FC<ToastProps> = ({
 
   /**
    * Manages the opening animation of the toast.
-   *
-   * - If the toast is open and hasn't finished animating (`isOpen` and `openAnimation` are true),
-   *   it starts a timeout to trigger the end of the opening animation.
-   *
-   * Dependencies:
-   * - `isOpen`: Whether the toast is open.
-   * - `openAnimation`: Whether the opening animation is in progress.
    */
 
   useEffect(() => {

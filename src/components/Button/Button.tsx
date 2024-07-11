@@ -27,14 +27,14 @@ interface ButtonProps extends PropsWithChildren {
  *
  * @param props
  * @param children - Elements inside button (optional)
- * @param size - Size of button (`"small"` | `"medium"` | `"large"`). Default is `"medium"`.
- * @param disabled - Whether the button is disabled (boolean)
+ * @param size - Size of button ("small" | "medium" | "large"). (Default: "medium").
+ * @param disabled - Whether the button is disabled (boolean, optional)
  * @param endIcon - Icon position at the end (React element, optional)
  * @param loading - Loading state, disables children elements when true (boolean, optional)
- * @param onClick - Function to be called when the button is clicked (optional)
+ * @param onClick - Function to be called when the button is clicked (func, optional)
  * @param href - Changes button into link element (string, optional)
  * @param liked - Checks if button has been liked (boolean, optional)
- * @param type - Type of the button element (`"button"` | `"submit"` | `"reset"`). Default is `"button"`
+ * @param type - Type of the button element ("button" | "submit" | "reset"). (Default: "button")
  * @param classString - Additional CSS classes to apply to the button (string, optional)
  * @param id - Unique identifier for the button (string, optional)
  *
@@ -86,7 +86,7 @@ const Button: React.FC<ButtonProps> = ({
       {...(buttonType === "a" && { href })} // Adds href properties onto button˝
     >
       {loading ? (
-        <Loading type="spinner" isLoading={loading} />
+        <Loading type="spinner"  />
       ) : (
         <>
           {startIcon && <span>{startIcon}</span>}

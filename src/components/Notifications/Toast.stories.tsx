@@ -9,6 +9,16 @@ const meta: Meta<typeof Toast> = {
   argTypes: {
     messageType: {
       control: { type: "select", options: ["success", "error"] },
+      description: "The type of toast message to display.",
+    },
+    autoClose: {
+      control: { type: "boolean" },
+      description:
+        "Whether the toast should automatically close after a timeout.",
+    },
+    hideProgressBar: {
+      control: { type: "boolean" },
+      description: "Whether to hide the progress bar.",
     },
   },
 };
