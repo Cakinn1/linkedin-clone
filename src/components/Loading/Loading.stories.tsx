@@ -18,3 +18,12 @@ export const HomeScreenLoader: Story = {
     return <Loading type={args.type} />;
   },
 };
+
+export const SkeletonLoader: Story = {
+  args: {
+    type: "skeleton",
+  },
+  render: (args) => {
+    return <Loading type={args.type} />;
+  },
+};
