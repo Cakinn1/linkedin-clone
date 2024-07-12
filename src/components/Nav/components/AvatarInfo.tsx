@@ -1,6 +1,6 @@
 import { RxAvatar } from "react-icons/rx";
 import { Button } from "../../Button";
-import useClickOutside from "../../../hooks/useClickOutside";
+import { useClickOutside } from "../../../hooks";
 
 interface AvatarInfoProps {
   onClose: () => void;
