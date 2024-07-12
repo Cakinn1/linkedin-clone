@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * A custom hook for detecthing clicks outside of a referenced element.
+ * A custom hook for detecting clicks outside of a referenced element.
  *
  * @param onClose - a callback function that will be triggered when a click occurs outside the referenced element
  *
