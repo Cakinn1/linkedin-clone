@@ -19,6 +19,7 @@ export type ButtonSize = "large" | "medium" | "small";
  * @property {'link'} LINK - Styled as a hyperlink.
  * @property {'social'} SOCIAL - Used for social actions (like, share, etc.).
  * @property {'tertiary'} TERTIARY - Minimal styling, for less important actions.
+ * @property {'navBtn'} NAVBTN - Strictly Nav styling only.
  */
 
 export type ButtonVarient =
@@ -27,7 +28,9 @@ export type ButtonVarient =
   | "social"
   | "secondary"
   | "link"
-  | "tertiary";
+  | "tertiary"
+  | "navBtn"
+  | "null" // ???
 
 /**
  * Represents the different roles of button available for the Button component.

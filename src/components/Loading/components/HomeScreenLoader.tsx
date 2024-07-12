@@ -16,8 +16,8 @@ const HomeScreenLoader: React.FC = ({}) => {
   const [progress, setProgress] = useState<number>(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const leftEnd = 120 as number;
-  const rightEnd = -20 as number;
+  const leftEnd = 100 as number;
+  const rightEnd = -24 as number;
   let flag = false as boolean;
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const HomeScreenLoader: React.FC = ({}) => {
         <LinkedInLogo />
         <div className="mx-auto bg-[#bbb1a1] overflow-hidden h-[2px] w-2/3 relative">
           <div
-            style={{ right: `${progress}px` }}
+            style={{ right: `${progress}%` }}
             className="bg-blue-500 h-[2px] w-[40px] absolute  duration-300"
           ></div>
         </div>

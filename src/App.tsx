@@ -1,13 +1,24 @@
+import { Nav } from "./components";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 const App: React.FC = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Router>
+        <Nav />
+        <Routes>
+          <Route />
+        </Routes>
+      </Router>
+    </div>
+  );
 };
 
 export default App;
 
 /**
  *  TODO:
- * - finish  spinner,
- * - i may not do the input folder one and change it still thinking
+ * - ?
  * 
  *  MAYBE:
  *  - fix folder for pages and etc

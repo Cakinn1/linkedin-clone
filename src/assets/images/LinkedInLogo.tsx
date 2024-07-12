@@ -1,8 +1,6 @@
 import React from "react";
 
 
-
-
 const  LinkedInLogo: React.FC = ({}) => {
   return (
     <svg

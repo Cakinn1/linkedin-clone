@@ -30,11 +30,7 @@ const Loading: React.FC<LoadingProps> = ({ type, spinnerColor = "gray" }) => {
     throw new Error(`Invalid loading type ${type}`);
   }
 
-  return (
-    <>
-      <LoaderComponent spinnerColor={spinnerColor} />
-    </>
-  );
+  return <LoaderComponent spinnerColor={spinnerColor} />;
 };
 
 export default Loading;

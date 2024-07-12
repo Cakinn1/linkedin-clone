@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from "react";
 import { ButtonSize, ButtonType, ButtonVarient } from "./Button.types";
 import clsx from "clsx";
 import { Loading } from "../Loading";
+import { Link } from "react-router-dom";
 
 interface ButtonProps extends PropsWithChildren {
   size?: ButtonSize;
@@ -16,6 +17,7 @@ interface ButtonProps extends PropsWithChildren {
   classString?: string;
   liked?: boolean;
   id?: string;
+  iconClassString?: string;
 }
 
 /**
@@ -37,6 +39,7 @@ interface ButtonProps extends PropsWithChildren {
  * @param type - Type of the button element ("button" | "submit" | "reset"). (Default: "button")
  * @param classString - Additional CSS classes to apply to the button (string, optional)
  * @param id - Unique identifier for the button (string, optional)
+ * @param iconClassString - additional CSS classes applied to endIcon & startIcon. (string, optional)
  *
  */
 
@@ -54,47 +57,57 @@ const Button: React.FC<ButtonProps> = ({
   classString,
   liked,
   id,
+  iconClassString,
 }) => {
   // disables button if either is true
   const isDisabled = loading || disabled;
   // Changes button type to either link or button
   const buttonType = href ? "a" : "button";
 
-  // Move classes into variable onec class is complete
-  // const buttonClasses = clsx("flex items-center bg-green-500 ")
+  const buttonClasses = clsx(
+    "border flex items-center p-2 duration-300 rounded-md justify-center active:scale-95",
+    {
+      "border-none hover:bg-gray-100 ": varient === "social",
+      "px-6 py-4 text-lg": size === "large",
+      "px-3 py-1 text-sm": size === "small",
+      "bg-blue-600 px-3 py-4 text-white text-sm rounded-3xl  hover:bg-blue-800 ":
+        varient === "primary",
+      "rounded-full p-2 border-none hover:bg-gray-100 ": varient === "tertiary",
+      "bg-gray-100": liked,
+      "border-none text-[#00000099] font-thin text-sm hover:text-black":
+        varient === "navBtn",
+    },
+    classString
+  );
 
-  return (
-    <button
-      data-testid={id}
-      type={buttonType === "button" ? type : undefined}
-      className={clsx(
-        "border flex items-center p-2 duration-300 rounded-md justify-center active:scale-95",
-        {
-          "border-none hover:bg-gray-100 ": varient === "social",
-          "px-6 py-4 text-lg": size === "large",
-          "px-3 py-1 text-sm": size === "small",
-          "bg-blue-600 px-3 py-4 text-white text-sm rounded-3xl  hover:bg-blue-800 ":
-            varient === "primary",
-          "rounded-full p-2 border-none hover:bg-gray-100 ":
-            varient === "tertiary",
-          "bg-gray-100": liked,
-        },
-        classString
-      )}
-      disabled={isDisabled}
-      onClick={onClick}
-      {...(buttonType === "a" && { href })} // Adds href properties onto button˝
-    >
-      {loading ? (
-        <Loading type="spinner"  />
-      ) : (
-        <>
-          {startIcon && <span>{startIcon}</span>}
-          {children}
-          {endIcon && <span>{startIcon}</span>}
-        </>
-      )}
-    </button>
+  // change anything here to update all buttons
+  const ResuableButton = () => {
+    return (
+      <button
+        data-testid={id}
+        type={type}
+        className={buttonClasses}
+        disabled={isDisabled}
+        onClick={onClick}
+      >
+        {loading ? (
+          <Loading type="spinner" />
+        ) : (
+          <>
+            {startIcon && <span className={iconClassString}>{startIcon}</span>}
+            {children}
+            {endIcon && <span className={iconClassString}>{endIcon}</span>}
+          </>
+        )}
+      </button>
+    );
+  };
+  return buttonType === "a" ? (
+    <Link to={href!}>
+      <ResuableButton />
+    </Link>
+  ) : (
+    <ResuableButton />
   );
 };
 
