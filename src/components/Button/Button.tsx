@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useEffect } from "react";
 import { ButtonSize, ButtonType, ButtonVarient } from "./Button.types";
 import clsx from "clsx";
 import { Loading } from "../Loading";
@@ -80,6 +80,7 @@ const Button: React.FC<ButtonProps> = ({
     classString
   );
 
+
   // change anything here to update all buttons
   const ResuableButton = () => {
     return (
@@ -102,13 +103,16 @@ const Button: React.FC<ButtonProps> = ({
       </button>
     );
   };
-  return buttonType === "a" ? (
-    <Link to={href!}>
-      <ResuableButton />
-    </Link>
-  ) : (
-    <ResuableButton />
-  );
+
+  const ButtonWithLink = () => {
+    return (
+      <Link to={href!}>
+        <ResuableButton />
+      </Link>
+    );
+  };
+
+  return buttonType === "a" ? <ButtonWithLink /> : <ResuableButton />;
 };
 
 export default Button;

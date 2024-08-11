@@ -4,8 +4,7 @@ import { useEffect, useRef } from "react";
  * A custom hook for detecting clicks outside of a referenced element.
  *
  * @param onClose - a callback function that will be triggered when a click occurs outside the referenced element
- *
- * @returns {{ ref: React.MutableRefObject<HTMLDivElement | null> }}  An object containing the 'ref' that needs to be attached the the target element
+ * @returns  An object containing the 'ref' that needs to be attached the the target element
  *
  * @example
  *

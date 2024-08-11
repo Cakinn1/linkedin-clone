@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import CloseSearchInput from "./components/CloseSearchInput";
 import LeftItems from "./components/LeftItems";
 import RightItems from "./components/RightItems";
@@ -59,6 +59,7 @@ const Nav: React.FC = ({}): JSX.Element => {
   const [focusInput, setFocusInput] = useState<boolean>(false);
   const [avatarInfo, setAvatarInfo] = useState<boolean>(false);
   const location = useLocation();
+
 
   const currentPath = location.pathname.split("/")[1] as string;
   const titleToCheck =

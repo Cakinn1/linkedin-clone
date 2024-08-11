@@ -30,7 +30,7 @@ export type ButtonVarient =
   | "link"
   | "tertiary"
   | "navBtn"
-  | "null" // ???
+  | "null"; // ???
 
 /**
  * Represents the different roles of button available for the Button component.
